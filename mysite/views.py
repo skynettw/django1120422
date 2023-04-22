@@ -5,9 +5,9 @@ def index(request):
     return render(request, "index.html", locals())
 
 def lotto(request):
-    numbers = [i for i in range(1, 50)]
-    random.shuffle(numbers)
-    numbers = numbers[:6]
+    numbers = [i for i in range(1, 50)]   # 先產生一個 1~49 的串列
+    random.shuffle(numbers)               # 打亂串列裡面各項目的順序
+    numbers = numbers[:6]                 # 只取出49個項目裡面的前6個（第0個到第5個）
     return render(request, "lotto.html", locals())
 
 def lucky(request):

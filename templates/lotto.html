@@ -7,5 +7,7 @@
 {% endblock %}
 
 {% block content %}
-{{ numbers }}
+  {% for n in numbers %}
+    <span style="font-size:38px;">{{ n }} </span>
+  {% endfor %}
 {% endblock %}
