@@ -4,6 +4,12 @@ import random
 def index(request):
     return render(request, "index.html", locals())
 
+def lotto(request):
+    numbers = [i for i in range(1, 50)]
+    random.shuffle(numbers)
+    numbers = numbers[:6]
+    return render(request, "lotto.html", locals())
+
 def lucky(request):
     name = random.choice(["王小明", "林小華", "林書豪"])
     lucky = random.randint(1, 49)
