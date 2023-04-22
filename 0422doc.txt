@@ -1,0 +1,35 @@
+1. 確定你的資料夾位置：C:\ <==表示是C磁碟機的根目錄
+2. 確定你的程式的版本 python --version  conda --version 
+3. 建立一個網站用的虛擬環境
+   (Virtual Environment for Python，
+   一個獨立的記憶體狀態，可以區分不同的Python模組)
+   a. virtualenv
+   b. python -m venv 
+   c. pyenv
+   d. conda env <== 我們要用的
+
+   conda create --name datacenter python=3.10  (建立虛擬環境)
+   conda env list                              (列出目前系統中所有的虛擬環境)
+   conda activate datacenter                   (啟用datacenter虛擬環境)
+4. 產生 Django 框架，它會建立一個網站的目錄和相關的檔案
+   pip install django 
+   django-admin startproject datacenter
+   cd datacenter
+   python manage.py startapp mysite
+5. 調整網站的整體設置，settings.py這個檔要做適當的修改 
+6. 資料庫同步作業
+   python manage.py makemigrations
+   python manage.py migrate
+7. 啟用測試網站
+   python manage.py runserver
+
+重要的檔案說明：
+A.datacenter/urls.py : 路由，瀏覽器透過網址進入之後，要設定由誰(views.py裡面的function)來處理這個請求(request)
+B.mysite/admin.py    : 管理網站的後台設定
+C.mysite/models.py   : 定義網站所使用的資料表 (資料庫)
+D.mysite/views.py    : 定義所有要路由所指定的function，真正所有Python程式要執行的地方
+E.templates/*.html   : 定義每一個要輸出網頁用的.html檔案 
+
+當我們要為網站增加一個功能的時候，順序：A->D->E (沒有資料表)  A->C->B->D->E (有資料表)
+
+path(路徑設定, 要處理的函式),
