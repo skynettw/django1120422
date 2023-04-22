@@ -3,11 +3,11 @@
 {% block title %} 何敏煌的網站 {% endblock %}
 
 {% block headmessage %} 
-<h1>以下是我預測的大樂透開獎號碼</h1>
+<h1 class="alert alert-secondary">以下是我預測的大樂透開獎號碼</h1>
 {% endblock %}
 
 {% block content %}
   {% for n in numbers %}
-    <span style="font-size:38px;">{{ n }} </span>
+    <span class="btn btn-danger">{{ n }} </span>
   {% endfor %}
 {% endblock %}
