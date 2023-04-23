@@ -5,5 +5,21 @@
 {% endblock %} 
 
 {% block content %} 
+
+<div class="card">
+  <div class="card-header">
+    {{ news.source }} 
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">{{ news.title }}</h5>
+    <p class="card-text">
+    	{{ news.content }}
+    </p>
+    <a href="/mynews/" class="btn btn-primary">回新聞列表</a>
+  </div>
+  <div class="card-footer text-body-secondary">
+    {{ news.pdate }}
+  </div>
+</div>
 	
 {% endblock %}
