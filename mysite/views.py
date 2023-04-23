@@ -1,21 +1,30 @@
 from django.shortcuts import render  # (渲染: 1.來自於瀏覽器的請求 2.HTML範本 3.要送過去的變數資料)
-from django.shortcuts import redirect
+from django.shortcuts import redirect # 轉址用
 import random
 from mysite.models import News, BodyInfo
 
 def index(request):
     return render(request, "index.html", locals())
 
+def delete(request, id):
+    try:
+        target = BodyInfo.objects.get(id=id)
+        target.delete()
+    except:
+        pass
+    return redirect('/bodyinfo/')
+
 def bodyinfo(request):
-    rawdata = BodyInfo.objects.all()
-    data = list()
-    for item in rawdata:
+    rawdata = BodyInfo.objects.all()  #先把所有的記錄取出
+    data = list()                     #建立一個空的串列 
+    for item in rawdata:              #把所有的記錄逐一取出，放在item中 
         temp = dict()
+        temp['id'] = item.id 
         temp['name'] = item.name 
         temp['height'] = item.height
         temp['weight'] = item.weight
-        temp['bmi'] = round(int(item.weight) / (int(item.height)/100)**2, 2)
-        data.append(temp)
+        temp['bmi'] = round(int(item.weight) / (int(item.height)/100)**2, 2)  #計算BMI
+        data.append(temp)             #把整理好的記錄放到 data 串列中
     return render(request, "bodyinfo.html", locals())
 
 def shownews(request, id):

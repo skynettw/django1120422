@@ -5,6 +5,16 @@
 {% endblock %} 
 
 {% block content %} 
+
+<form action="/add/" method="POST">
+	{% csrf_token %}
+	姓名：<input name="name" size=10>
+	身高：<input name="h" size=4>公分，
+	體重：<input name="w" size=4>公斤
+	<input type=submit value="新增">
+</form>
+
+
 	<table class="table table-success table-striped">
 		<tr><td>姓名</td><td>身高</td><td>體重</td><td>BMI</td><td>管理</td></tr>
   {% for item in data %}

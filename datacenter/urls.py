@@ -5,6 +5,7 @@ from mysite import views  #去mysite資料夾中匯入views.py這個檔案
 urlpatterns = [
     path('', views.index),
     path('shownews/<int:id>/', views.shownews),
+    path('delete/<int:id>/', views.delete),
     path('lotto/', views.lotto),
     path('bodyinfo/', views.bodyinfo),
     path('lucky/', views.lucky),
