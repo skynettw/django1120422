@@ -6,11 +6,11 @@
 
 {% block content %} 
 
-<form action="/add/" method="POST">
+<form action="/bodyinfo/" method="POST">
 	{% csrf_token %}
-	姓名：<input name="name" size=10>
-	身高：<input name="h" size=4>公分，
-	體重：<input name="w" size=4>公斤
+	姓名：<input name="name" size=10 required>
+	身高：<input name="h" size=4 required>公分，
+	體重：<input name="w" size=4 required>公斤
 	<input type=submit value="新增">
 </form>
 

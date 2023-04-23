@@ -15,16 +15,26 @@ def delete(request, id):
     return redirect('/bodyinfo/')
 
 def bodyinfo(request):
-    rawdata = BodyInfo.objects.all()  #先把所有的記錄取出
-    data = list()                     #建立一個空的串列 
-    for item in rawdata:              #把所有的記錄逐一取出，放在item中 
-        temp = dict()
-        temp['id'] = item.id 
-        temp['name'] = item.name 
-        temp['height'] = item.height
-        temp['weight'] = item.weight
-        temp['bmi'] = round(int(item.weight) / (int(item.height)/100)**2, 2)  #計算BMI
-        data.append(temp)             #把整理好的記錄放到 data 串列中
+    if request.method == "POST":
+        #如果是按了表單的送出按鈕進來這個網址
+        name = request.POST.get("name")
+        h = request.POST.get("h")
+        w = request.POST.get("w")
+        rec = BodyInfo(name=name, height=h, weight=w)
+        rec.save()
+        return redirect("/bodyinfo/")
+    else:
+        #如果是一般的瀏覽網頁
+        rawdata = BodyInfo.objects.all().order_by('-id')  #先把所有的記錄取出
+        data = list()                     #建立一個空的串列 
+        for item in rawdata:              #把所有的記錄逐一取出，放在item中 
+            temp = dict()
+            temp['id'] = item.id 
+            temp['name'] = item.name 
+            temp['height'] = item.height
+            temp['weight'] = item.weight
+            temp['bmi'] = round(int(item.weight) / (int(item.height)/100)**2, 2)  #計算BMI
+            data.append(temp)             #把整理好的記錄放到 data 串列中
     return render(request, "bodyinfo.html", locals())
 
 def shownews(request, id):
