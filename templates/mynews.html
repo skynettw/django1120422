@@ -9,7 +9,9 @@
 		<tr><td>新聞標題</td><td>新聞來源</td><td>張貼時間</td></tr>
   {% for item in news %}
   		<tr>
-  			<td>{{ item.title }}</td>
+  			<td>
+  			  	<a href="/shownews/{{ item.id }}/">{{ item.title }}</a>
+  			</td>
   			<td>{{ item.source }}</td>
   			<td>{{ item.pdate }}</td>
     	</tr>

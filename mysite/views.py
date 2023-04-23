@@ -5,10 +5,14 @@ from mysite.models import News
 def index(request):
     return render(request, "index.html", locals())
 
-def mynews(request):
+def shownews(request, id):
 
+    news = News.objects.get(id=id)
+
+    return render(request, "shownews.html", locals())
+
+def mynews(request):
     news = News.objects.all()
-    
     return render(request, "mynews.html", locals())
 
 def lotto(request):
