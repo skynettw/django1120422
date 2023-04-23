@@ -6,5 +6,6 @@ urlpatterns = [
     path('', views.index),
     path('lotto/', views.lotto),
     path('lucky/', views.lucky),
+    path('mynews/', views.mynews),
     path('admin/', admin.site.urls),
 ]

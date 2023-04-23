@@ -1,8 +1,15 @@
 from django.shortcuts import render  # (渲染: 1.來自於瀏覽器的請求 2.HTML範本 3.要送過去的變數資料)
 import random
+from mysite.models import News
 
 def index(request):
     return render(request, "index.html", locals())
+
+def mynews(request):
+
+    news = News.objects.all()
+    
+    return render(request, "mynews.html", locals())
 
 def lotto(request):
     numbers = [i for i in range(1, 50)]   # 先產生一個 1~49 的串列
