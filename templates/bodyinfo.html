@@ -6,7 +6,7 @@
 
 {% block content %} 
 	<table class="table table-success table-striped">
-		<tr><td>姓名</td><td>身高</td><td>體重</td></tr>
+		<tr><td>姓名</td><td>身高</td><td>體重</td><td>BMI</td><td>管理</td></tr>
   {% for item in data %}
   		<tr>
   			<td>
@@ -14,6 +14,10 @@
   			</td>
   			<td>{{ item.height }}</td>
   			<td>{{ item.weight }}</td>
+  			<td>{{ item.bmi }}</td>
+  			<td>
+  				<a class="btn btn-outline-danger btn-sm" href="/delete/{{item.id}}/">刪除</a>
+  			</td>
     	</tr>
   {% endfor %}
   	</table>

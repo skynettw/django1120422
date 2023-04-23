@@ -7,7 +7,15 @@ def index(request):
     return render(request, "index.html", locals())
 
 def bodyinfo(request):
-    data = BodyInfo.objects.all()
+    rawdata = BodyInfo.objects.all()
+    data = list()
+    for item in rawdata:
+        temp = dict()
+        temp['name'] = item.name 
+        temp['height'] = item.height
+        temp['weight'] = item.weight
+        temp['bmi'] = round(int(item.weight) / (int(item.height)/100)**2, 2)
+        data.append(temp)
     return render(request, "bodyinfo.html", locals())
 
 def shownews(request, id):
