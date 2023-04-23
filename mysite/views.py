@@ -1,10 +1,14 @@
 from django.shortcuts import render  # (渲染: 1.來自於瀏覽器的請求 2.HTML範本 3.要送過去的變數資料)
 from django.shortcuts import redirect
 import random
-from mysite.models import News
+from mysite.models import News, BodyInfo
 
 def index(request):
     return render(request, "index.html", locals())
+
+def bodyinfo(request):
+    data = BodyInfo.objects.all()
+    return render(request, "bodyinfo.html", locals())
 
 def shownews(request, id):
     try:

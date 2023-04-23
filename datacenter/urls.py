@@ -6,6 +6,7 @@ urlpatterns = [
     path('', views.index),
     path('shownews/<int:id>/', views.shownews),
     path('lotto/', views.lotto),
+    path('bodyinfo/', views.bodyinfo),
     path('lucky/', views.lucky),
     path('mynews/', views.mynews),
     path('admin/', admin.site.urls),

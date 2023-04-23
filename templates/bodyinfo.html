@@ -1,0 +1,20 @@
+{% extends "base.html" %} 
+{% block title %} 何敏煌的網站 {% endblock %} 
+{% block headmessage %}
+	<h1 class="alert alert-warning">班級身體健康管理表</h1>
+{% endblock %} 
+
+{% block content %} 
+	<table class="table table-success table-striped">
+		<tr><td>姓名</td><td>身高</td><td>體重</td></tr>
+  {% for item in data %}
+  		<tr>
+  			<td>
+  			  	{{ item.name }}
+  			</td>
+  			<td>{{ item.height }}</td>
+  			<td>{{ item.weight }}</td>
+    	</tr>
+  {% endfor %}
+  	</table>
+{% endblock %}

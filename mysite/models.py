@@ -9,8 +9,8 @@ class News(models.Model):
         return self.title
 
 class BodyInfo(models.Model):
-    name = models.CharField(max_length=50)
-    height = models.PositiveIntegerField()
-    weight = models.PositiveIntegerField()
+    name = models.CharField(max_length=50, verbose_name="姓名")
+    height = models.PositiveIntegerField(verbose_name="身高")
+    weight = models.PositiveIntegerField(verbose_name="體重")
     def __str__(self):
         return self.name
